@@ -1,0 +1,84 @@
+/* 引用像素字体（如果想更像，建议下载 Stardew Valley 专用字体） */
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+
+body {
+    background-color: #211510; /* 深色背景，模拟游戏加载界面 */
+    color: #4A2410;
+    font-family: 'ZCOOL KuaiLe', 'Microsoft YaHei', sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-container {
+    background-color: #fcead2; /* 羊皮纸色 */
+    border: 6px solid #a0522d;
+    outline: 4px solid #5d2906; /* 双重边框模拟游戏对话框 */
+    max-width: 900px;
+    width: 100%;
+    padding: 30px;
+    box-shadow: 0 10px 0 rgba(0,0,0,0.3);
+}
+
+/* 右侧信息框 Infobox */
+.infobox {
+    float: right;
+    width: 280px;
+    background: #e9c2a6;
+    border: 4px solid #8b4513;
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.infobox-header {
+    background-color: #b15d2e;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    font-size: 1.4em;
+    text-shadow: 2px 2px #5d2906;
+}
+
+.infobox-image {
+    background: #fff;
+    border: 2px solid #8b4513;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.infobox-image img {
+    width: 100%;
+    image-rendering: pixelated; /* 关键：保持像素清晰不模糊 */
+}
+
+/* 喜好表格样式 */
+.gift-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.gift-header {
+    background: #b15d2e;
+    color: white;
+    padding: 5px 10px;
+}
+
+.gift-row {
+    border-bottom: 2px solid #d2b48c;
+}
+
+.gift-icon {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    image-rendering: pixelated;
+    margin-right: 8px;
+}
+
+h1, h2 {
+    border-bottom: 3px solid #a0522d;
+    padding-bottom: 5px;
+}
