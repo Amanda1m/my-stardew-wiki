@@ -1,84 +1,92 @@
-/* 引用像素字体（如果想更像，建议下载 Stardew Valley 专用字体） */
-@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
-
+/* 全局背景和字体 */
 body {
-    background-color: #211510; /* 深色背景，模拟游戏加载界面 */
-    color: #4A2410;
-    font-family: 'ZCOOL KuaiLe', 'Microsoft YaHei', sans-serif;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
+    background-color: #fcf1da; /* 维基正文浅米色 */
+    font-family: sans-serif;
+    color: #2f1506;
+    line-height: 1.6;
+    margin: 20px;
 }
 
-.main-container {
-    background-color: #fcead2; /* 羊皮纸色 */
-    border: 6px solid #a0522d;
-    outline: 4px solid #5d2906; /* 双重边框模拟游戏对话框 */
-    max-width: 900px;
-    width: 100%;
-    padding: 30px;
-    box-shadow: 0 10px 0 rgba(0,0,0,0.3);
+/* 页面主标题 */
+.firstHeading {
+    border-bottom: 1px solid #a7d08a; /* 经典的淡绿色分割线 */
+    font-size: 2em;
+    font-weight: normal;
+    margin-bottom: 0.5em;
 }
 
-/* 右侧信息框 Infobox */
-.infobox {
+/* 1. 右侧信息框 (Infobox) */
+.infobox-villager {
     float: right;
-    width: 280px;
-    background: #e9c2a6;
-    border: 4px solid #8b4513;
-    margin-left: 20px;
-    padding: 10px;
-    border-radius: 4px;
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #a7d08a;
+    border-radius: 10px;
+    padding: 1px;
+    margin-left: 1.5em;
 }
 
-.infobox-header {
-    background-color: #b15d2e;
-    color: white;
+.infobox-name {
+    background-color: #a7d08a; /* 顶部名称背景色 */
+    color: #000;
     text-align: center;
-    padding: 8px;
-    font-size: 1.4em;
-    text-shadow: 2px 2px #5d2906;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 8px 8px 0 0;
 }
 
-.infobox-image {
-    background: #fff;
-    border: 2px solid #8b4513;
-    margin: 10px 0;
-    text-align: center;
-}
-
-.infobox-image img {
+.infobox-data {
     width: 100%;
-    image-rendering: pixelated; /* 关键：保持像素清晰不模糊 */
+    font-size: 0.9em;
+    border-collapse: collapse;
 }
 
-/* 喜好表格样式 */
+.infobox-data td {
+    padding: 4px 8px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.infobox-label {
+    background-color: #e6ffed; /* 标签栏背景 */
+    font-weight: bold;
+    width: 40%;
+}
+
+/* 2. 左侧正文内容区块 */
+.section-header {
+    background-color: #a7d08a;
+    color: #000;
+    padding: 4px 10px;
+    margin-top: 20px;
+    font-weight: bold;
+    display: inline-block;
+    border-radius: 5px 5px 0 0;
+}
+
+.content-box {
+    border: 1px solid #a7d08a;
+    padding: 15px;
+    background: #fff;
+    margin-bottom: 20px;
+}
+
+/* 3. 礼物表格样式 */
 .gift-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
-.gift-header {
-    background: #b15d2e;
-    color: white;
-    padding: 5px 10px;
+.gift-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
 }
 
-.gift-row {
-    border-bottom: 2px solid #d2b48c;
-}
+/* 礼物分类颜色 */
+.love { background-color: #e6ffed; font-weight: bold; width: 100px; text-align: center; }
+.like { background-color: #fff9e6; font-weight: bold; width: 100px; text-align: center; }
+.neutral { background-color: #f9f9f9; font-weight: bold; width: 100px; text-align: center; }
+.dislike { background-color: #fff0f0; font-weight: bold; width: 100px; text-align: center; }
 
-.gift-icon {
-    width: 32px;
-    height: 32px;
-    vertical-align: middle;
-    image-rendering: pixelated;
-    margin-right: 8px;
-}
-
-h1, h2 {
-    border-bottom: 3px solid #a0522d;
-    padding-bottom: 5px;
-}
+/* 像素图片优化 */
+img { image-rendering: pixelated; vertical-align: middle; }
