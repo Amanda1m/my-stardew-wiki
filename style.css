@@ -1,140 +1,385 @@
 /* 全局背景和字体 */
 body {
-    background-color: #fcf1da; /* 维基正文浅米色 */
-    /* 可替换为项目内的背景图：images/bg.jpg */
+    background-color: #fcf1da;
     background-image: url('images/bg.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    font-family: sans-serif;
-    color: #2f1506;
+    background-repeat: no-repeat;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #202122;
     line-height: 1.6;
-    margin: 0; /* 使用页面外边距为0，让背景铺满 */
+    margin: 0;
 }
 
-/* 页面主标题 */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: rgba(252, 241, 218, 0.10);
+}
+
 .firstHeading {
-    border-bottom: 1px solid #a7d08a; /* 经典的淡绿色分割线 */
+    border-bottom: 1px solid #a2a9b1;
     font-size: 2em;
     font-weight: normal;
-    margin-bottom: 0.5em;
+    line-height: 1.2;
+    margin: 0 0 0.6em 0;
+    padding-bottom: 0.2em;
 }
 
-/* 1. 右侧信息框 (Infobox) */
-.infobox-villager {
-    float: right;
+.main-container {
+    max-width: 1000px;
+    margin: 24px auto;
+    padding: 16px 18px 20px 18px;
+    padding-right: 356px;
+    background: rgba(255, 255, 255, 0.56);
+    border: 1px solid #a2a9b1;
+    border-radius: 0;
+    box-shadow: none;
+    position: relative;
+}
+
+.sidebar {
+    position: absolute;
+    top: 16px;
+    right: 18px;
     width: 300px;
-    background-color: rgba(255,255,255,0.95);
-    border: 1px solid #a7d08a;
-    border-radius: 10px;
-    padding: 1px;
+}
+
+.infobox-villager {
+    width: fit-content;
+    max-width: 100%;
+    background: rgba(255, 255, 255, 0.56);
+    border: 20px solid transparent;
+    border-image-source: url('images/frame.png');
+    border-image-slice: 18;
+    border-image-width: 20px;
+    border-image-repeat: stretch;
+    border-radius: 0;
+    padding: 2px;
     margin-left: 1.5em;
+    font-size: 13px;
+    box-sizing: border-box;
 }
 
 .infobox-name {
-    background-color: #a7d08a; /* 顶部名称背景色 */
-    color: #000;
+    background: transparent;
+    color: #202122;
     text-align: center;
     font-weight: bold;
-    padding: 5px;
-    border-radius: 8px 8px 0 0;
+    padding: 3px 6px 1px;
+    border: 0;
+    font-size: 1.38em;
+}
+
+.infobox-portrait {
+    text-align: center;
+    padding: 2px 6px 2px;
+}
+
+.infobox-portrait img {
+    border: 0;
+    background: transparent;
+    display: inline-block;
+    max-width: 128px;
+    height: auto;
 }
 
 .infobox-data {
     width: 100%;
-    font-size: 0.9em;
+    display: table;
+    margin: 0 auto 2px;
+    font-size: 1em;
     border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.56);
+}
+
+.infobox-section {
+    background: rgb(3, 160, 7);
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 8px;
+    border-bottom: 1px solid #a2a9b1;
 }
 
 .infobox-data td {
-    padding: 4px 8px;
-    border-bottom: 1px solid #f0f0f0;
+    padding: 2px 6px;
+    border-bottom: 1px solid rgba(163, 124, 57, 0.25);
 }
 
 .infobox-label {
-    background-color: #e6ffed; /* 标签栏背景 */
+    background-color: rgb(3, 160, 7);
+    color: #fff;
     font-weight: bold;
-    width: 40%;
+    text-align: center;
+    width: 34%;
 }
 
-/* 2. 左侧正文内容区块 */
-.section-header {
-    background-color: #a7d08a;
-    color: #000;
-    padding: 4px 10px;
-    margin-top: 20px;
+.toc {
+    width: fit-content;
+    max-width: 100%;
+    margin: 22px 0 0 0;
+    background: rgba(248, 249, 250, 0.64);
+    padding: 0 10px 8px;
+    border: 1px solid rgba(162, 169, 177, 0.9);
+    border-radius: 0;
+    font-size: 13px;
+}
+
+.toc h2 {
+    font-size: 1em;
+    margin: 0;
+    padding: 0 0 8px;
+    background: rgba(234, 236, 240, 0.45);
+    border: 0;
     font-weight: bold;
-    display: inline-block;
-    border-radius: 5px 5px 0 0;
+    text-align: center;
+}
+
+.toc-toggle {
+    float: none;
+    color: #0645ad;
+    font-weight: normal;
+}
+
+.toc ol {
+    margin: 0;
+    padding: 0;
+    counter-reset: toc-item;
+}
+
+.toc li {
+    margin: 2px 0;
+    list-style: none;
+    text-align: left;
+    display: block;
+    counter-increment: toc-item;
+    padding-left: 0;
+}
+
+.toc li::before {
+    content: counters(toc-item, ".") ". ";
+    color: #202122;
+}
+
+.toc ol ol {
+    margin-top: 2px;
+    padding-left: 1.4em;
+    counter-reset: toc-item;
+}
+
+.toc a {
+    color: #0645ad;
+    text-decoration: none;
+}
+
+.toc a:hover {
+    text-decoration: underline;
+}
+
+.sidebar .infobox-villager {
+    float: none;
+    margin-left: auto;
+    margin-right: 0;
+    width: fit-content;
+    display: block;
+}
+
+.sidebar .toc {
+    width: fit-content;
+    max-width: 100%;
+    margin-left: auto;
+}
+
+.section-header {
+    display: block;
+    color: #202122;
+    font-size: 1.35em;
+    font-weight: bold;
+    line-height: 1.25;
+    margin: 1.25em 0 0.35em;
+    padding: 0 0 0.15em;
+    border-bottom: 1px solid #a2a9b1;
+    background: transparent;
 }
 
 .content-box {
-    border: 1px solid #a7d08a;
-    padding: 15px;
-    background: rgba(255,255,255,0.95);
-    margin-bottom: 20px;
+    border: 0;
+    padding: 0 0 10px;
+    background: transparent;
+    margin-bottom: 8px;
+    font-size: 14px;
 }
 
-/* 3. 礼物表格样式 */
-.gift-table {
+.plain-text-box p {
+    margin: 0 0 0.8em 0;
+}
+
+.wiki-paragraphs p {
+    margin: 0 0 0.8em 0;
+}
+
+.wiki-paragraphs p:last-child {
+    margin-bottom: 0;
+}
+
+.wiki-paragraphs b {
+    font-weight: bold;
+}
+
+.wiki-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+    border-collapse: separate;
+    border-spacing: 4px;
+    margin-top: 4px;
+    font-size: 12.5px;
+    line-height: 1.35;
+    background: transparent;
 }
 
-.gift-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+.wiki-table th,
+.wiki-table td {
+    border: 0;
+    padding: 5px 10px;
+    vertical-align: top;
+    word-break: break-word;
 }
 
-/* 礼物分类颜色 */
-.love { background-color: #e6ffed; font-weight: bold; width: 100px; text-align: center; }
-.like { background-color: #fff9e6; font-weight: bold; width: 100px; text-align: center; }
-.neutral { background-color: #f9f9f9; font-weight: bold; width: 100px; text-align: center; }
-.dislike { background-color: #fff0f0; font-weight: bold; width: 100px; text-align: center; }
-
-/* 像素图片优化 */
-img { image-rendering: pixelated; vertical-align: middle; }
-
-/* 页面主容器：半透明叠加在背景之上 */
-.main-container {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 24px;
-    background: rgba(255,255,255,0.9);
-    border-radius: 10px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-    position: relative;
+.wiki-table .table-head {
+    background: rgb(3, 160, 7);
+    color: #fff;
+    text-align: center;
 }
 
-/* 目录 (TOC) */
-.toc {
-    float: left;
-    width: 200px;
-    margin-right: 20px;
-    background: rgba(255,255,255,0.85);
-    padding: 10px;
-    border: 1px solid rgba(0,0,0,0.06);
-    border-radius: 6px;
+.wiki-table tbody td {
+    background: rgba(255, 255, 255, 0.48);
 }
-.toc h2 { font-size: 1.1em; margin: 0 0 8px 0; }
-.toc ul { list-style: none; padding-left: 6px; margin: 0; }
-.toc li { margin: 6px 0; }
-.toc a { color: #065f46; text-decoration: none; }
 
-/* 内容区域与目录并排时的样式调整 */
-.main-container:after { content: ""; display: table; clear: both; }
+.wiki-table tr td:first-child {
+    background-color: rgba(3, 160, 7, 0.14);
+    color: #202122;
+    font-weight: bold;
+    text-align: center;
+}
 
-/* 响应式：窄屏时目录折叠，信息框和内容改为流式 */
+.love {
+    background-color: rgba(3, 160, 7, 0.18);
+    font-weight: bold;
+    width: 100px;
+    text-align: center;
+    color: #202122;
+}
+
+.like {
+    background-color: rgba(3, 160, 7, 0.10);
+    font-weight: bold;
+    width: 100px;
+    text-align: center;
+    color: #202122;
+}
+
+.neutral {
+    background-color: rgba(255, 255, 255, 0.66);
+    font-weight: bold;
+    width: 100px;
+    text-align: center;
+    color: #202122;
+}
+
+.dislike {
+    background-color: rgba(255, 245, 245, 0.70);
+    font-weight: bold;
+    width: 100px;
+    text-align: center;
+    color: #202122;
+}
+
+img {
+    image-rendering: pixelated;
+    vertical-align: middle;
+}
+
+.heart-block-image {
+    padding: 10px 0 4px;
+    text-align: center;
+}
+
+.heart-block-image img {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    max-width: 64px;
+    max-height: 64px;
+}
+
+.wiki-heart-list h3 {
+    font-size: 1.15em;
+    font-weight: bold;
+    margin: 1.1em 0 0.5em;
+    padding-bottom: 0.12em;
+    border-bottom: 1px solid #a2a9b1;
+}
+
+.wiki-heart-list p {
+    margin: 0 0 1em 0;
+}
+
+.main-container .section-header + .content-box {
+    border: 0;
+    padding-top: 0;
+}
+
+.portrait-gallery {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.portrait-gallery figure {
+    margin: 0;
+    text-align: center;
+}
+
+.portrait-gallery img {
+    display: block;
+    width: 100px;
+    height: auto;
+    margin: 0 auto 6px;
+    border: 0;
+}
+
+.portrait-gallery figcaption {
+    font-size: 12px;
+    color: #202122;
+}
+
+.main-container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 @media (max-width: 800px) {
-    .toc { display: none; }
-    .main-container { margin: 20px; padding: 16px; }
-    .infobox-villager { float: none; width: 100%; margin: 0 0 1em 0; }
-}
-/* 响应式：窄屏时取消信息框浮动，改为流式布局 */
-@media (max-width: 800px) {
+    .sidebar {
+        position: static;
+        width: auto;
+    }
+
+    .toc {
+        display: none;
+    }
+
+    .main-container {
+        margin: 12px;
+        padding: 12px;
+        padding-right: 12px;
+    }
+
     .infobox-villager {
-        float: none;
         width: 100%;
         margin: 0 0 1em 0;
     }
