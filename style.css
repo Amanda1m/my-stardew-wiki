@@ -1,10 +1,15 @@
 /* 全局背景和字体 */
 body {
     background-color: #fcf1da; /* 维基正文浅米色 */
+    /* 可替换为项目内的背景图：images/bg.jpg */
+    background-image: url('images/bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     font-family: sans-serif;
     color: #2f1506;
     line-height: 1.6;
-    margin: 20px;
+    margin: 0; /* 使用页面外边距为0，让背景铺满 */
 }
 
 /* 页面主标题 */
@@ -19,7 +24,7 @@ body {
 .infobox-villager {
     float: right;
     width: 300px;
-    background-color: #fff;
+    background-color: rgba(255,255,255,0.95);
     border: 1px solid #a7d08a;
     border-radius: 10px;
     padding: 1px;
@@ -66,7 +71,7 @@ body {
 .content-box {
     border: 1px solid #a7d08a;
     padding: 15px;
-    background: #fff;
+    background: rgba(255,255,255,0.95);
     margin-bottom: 20px;
 }
 
@@ -91,6 +96,41 @@ body {
 /* 像素图片优化 */
 img { image-rendering: pixelated; vertical-align: middle; }
 
+/* 页面主容器：半透明叠加在背景之上 */
+.main-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 24px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    position: relative;
+}
+
+/* 目录 (TOC) */
+.toc {
+    float: left;
+    width: 200px;
+    margin-right: 20px;
+    background: rgba(255,255,255,0.85);
+    padding: 10px;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 6px;
+}
+.toc h2 { font-size: 1.1em; margin: 0 0 8px 0; }
+.toc ul { list-style: none; padding-left: 6px; margin: 0; }
+.toc li { margin: 6px 0; }
+.toc a { color: #065f46; text-decoration: none; }
+
+/* 内容区域与目录并排时的样式调整 */
+.main-container:after { content: ""; display: table; clear: both; }
+
+/* 响应式：窄屏时目录折叠，信息框和内容改为流式 */
+@media (max-width: 800px) {
+    .toc { display: none; }
+    .main-container { margin: 20px; padding: 16px; }
+    .infobox-villager { float: none; width: 100%; margin: 0 0 1em 0; }
+}
 /* 响应式：窄屏时取消信息框浮动，改为流式布局 */
 @media (max-width: 800px) {
     .infobox-villager {
