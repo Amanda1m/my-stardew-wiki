@@ -328,6 +328,19 @@ img {
     margin: 0 0 1em 0;
 }
 
+.gift-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+}
+
+.gift-inline img {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 auto;
+}
+
 .main-container .section-header + .content-box {
     border: 0;
     padding-top: 0;
