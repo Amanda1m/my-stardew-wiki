@@ -90,3 +90,12 @@ body {
 
 /* 像素图片优化 */
 img { image-rendering: pixelated; vertical-align: middle; }
+
+/* 响应式：窄屏时取消信息框浮动，改为流式布局 */
+@media (max-width: 800px) {
+    .infobox-villager {
+        float: none;
+        width: 100%;
+        margin: 0 0 1em 0;
+    }
+}
